@@ -1,0 +1,56 @@
+<nav class="navbar navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold" href="/">Angular Simple CRUD</a>
+  </div>
+</nav>
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-md-8">
+      <ul class="list-group">
+        <li
+          class="list-group-item list-group-item-action"
+          *ngFor="let employee of employes"
+          (click)="openEdit(employee)"
+          [class.active]="employee == formulario"
+        >
+          <span class="badge bg-primary">{{ employee.id }}</span>
+          {{ employee.name }} - {{ employee.country }}
+        </li>
+      </ul>
+      <div class="card mt-4">
+        <div class="card-body">
+          <div class="card-title">
+            Insert a New Employed
+            <div class="form-group">
+              <input
+                type="text"
+                placeholder="Name"
+                class="form-control"
+                [(ngModel)]="formulario.name"
+              />
+              <input
+                type="text"
+                placeholder="Country"
+                class="form-control mt-2"
+                [(ngModel)]="formulario.country"
+              />
+              <button class="btn btn-primary mt-2" (click)="addOrEdit()">
+                send
+              </button>
+              <button
+                *ngIf="formulario.id !== 0"
+                class="btn btn-danger mt-2"
+                (click)="delite(formulario.id)"
+              >
+                delite
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <img class="w-4"  style="min-width: 350px;" src="../assets/angular.png" alt="foto" />
+    </div>
+  </div>
+</div>
